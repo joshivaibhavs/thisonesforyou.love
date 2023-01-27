@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey there, this one's for you...</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+
+<body>
+    <style>
+        @font-face {
+            font-family: 'GreatVibes';
+            src: url('GreatVibes-Regular.ttf');
+            letter-spacing: 1.5rem;
+        }
+
+        body {
+            font-family: GreatVibes;
+            font-size: 2rem;
+            background-image: linear-gradient(to bottom left, rgb(255, 107, 131), rgb(255, 47, 47));
+            overflow: hidden !important;
+            color: #321cb3;
+        }
+
+        .screen {
+            display: flex;
+            height: 100vh !important;
+            width: 100vw !important;
+            flex-direction: column;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        span.material-symbols-rounded {
+            font-size: 5rem;
+            cursor: pointer;
+        }
+
+        #rose-img {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            width: auto;
+            height: auto;
+            max-width: 25vw;
+            max-height: 25vh;
+        }
+    </style>
+    <div class="screen center">
+        <img id="rose-img" src="rose-img.png" alt="rose">
+        <h3>Hey there,</h3>
+        <h3 id="name"></h3>
+        <h4>I recorded this song just for you...</h4>
+        <span style="display: block;" id="play-btn" class="material-symbols-rounded">
+            play_circle
+        </span>
+        <span id="stop-btn" style="display: none;" class="material-symbols-rounded">
+            stop_circle
+        </span>
+        <audio style="display: none;">
+            <source src="my-song.mp3" type="audio/mp3">
+        </audio>
+    </div>
+    <script>
+        function setName() {
+            const name = window.location.hostname.replace('.thisonesforyou.love', '');
+            const nameEl = document.querySelector('#name');
+            nameEl.innerHTML = name;
+        }
+        (function () {
+            setName();
+            const playBtn = document.querySelector('#play-btn');
+            if (!playBtn) return;
+            const stopBtn = document.querySelector('#stop-btn');
+            if (!stopBtn) return;
+            const audio = document.querySelector('audio');
+            if (!audio) return;
+            audio.stop = function () {
+                this.pause();
+                this.currentTime = 0;
+            };
+            playBtn.addEventListener('click', function () {
+                playBtn.style.display = 'none';
+                stopBtn.style.display = 'block';
+                audio.play();
+            });
+            stopBtn.addEventListener('click', function () {
+                playBtn.style.display = 'block';
+                stopBtn.style.display = 'none';
+                audio.stop();
+            });
+        })()
+    </script>
+</body>
+
+</html>
