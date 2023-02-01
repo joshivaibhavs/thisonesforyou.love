@@ -58,8 +58,7 @@
     </style>
     <div class="screen center">
         <img id="rose-img" src="rose-img.png" alt="rose">
-        <h3>Hey there,</h3>
-        <h3 id="name"></h3>
+        <h3>Hey there Ashima,</h3>
         <h4>I recorded this song just for you...</h4>
         <span style="display: block;" id="play-btn" class="material-symbols-rounded">
             play_circle
@@ -72,13 +71,7 @@
         </audio>
     </div>
     <script>
-        function setName() {
-            const name = window.location.hostname.replace('.thisonesforyou.love', '');
-            const nameEl = document.querySelector('#name');
-            nameEl.innerHTML = name;
-        }
         (function () {
-            setName();
             const playBtn = document.querySelector('#play-btn');
             if (!playBtn) return;
             const stopBtn = document.querySelector('#stop-btn');
